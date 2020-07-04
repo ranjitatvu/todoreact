@@ -1,4 +1,5 @@
 import React from "react"
+import TodoItem from "./TodoItem"
 function MainContent(){
 
     const date = new Date()
@@ -13,13 +14,19 @@ function MainContent(){
         timeOfDay = "night"
     } 
 
+    const styles ={
+        color:"#FF8C00",
+        backroundColor:"rebeccapurple",
+        fontSize:55
+    }
+
     return(
         <div>
         <p>This is main content</p>
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <h1>Good{timeOfDay}!</h1>
+        
+        <TodoItem />
+        <TodoItem />
+        <h1 style={styles}>Good{timeOfDay}!</h1>
         </div>
     )
 }
