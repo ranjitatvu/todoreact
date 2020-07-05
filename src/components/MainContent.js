@@ -1,7 +1,24 @@
 import React from "react"
 import TodoItem from "./TodoItem"
 import ContactCard from "./ContactCard"
+import Joke from './Joke'
+import jokesData from '../jokesData'
+import contactData from "../contactData"
+import vschoolProducts from '../vschoolProducts'
+import ProductList from './ProductList'
 function MainContent(){
+
+    const productComponents = vschoolProducts.map(product =>
+        <ProductList key={product.id} product ={product}/> )
+
+    const contactComponents =  contactData.map(contact => 
+        <ContactCard key={contact.id} contactcard={contact} 
+        /> )
+
+   const jokeComponents =  jokesData.map(joke => 
+        
+            <Joke question ={joke.question} 
+            punchline={joke.punchLine} />)
 
     const date = new Date()
     const hours  = date.getHours()
@@ -28,28 +45,48 @@ function MainContent(){
         <TodoItem />
         <TodoItem />
         <div>
-            <ContactCard 
-                    contact={{imgUrl:"http://placekitten.com/300/200",
-                    phone:'(+61) 449 994 035',
-                    name:'Ranjit Palaniappan',
-                    email:'ranjit.palaniappan@gmail.com'}}
-       
-             />
-        <ContactCard 
-        
-                contact={{imgUrl:"http://placekitten.com/300/200",
-                phone:'(+61) 449 994 035',
-                name:'Super Star',
-                email:'super.star@gmail.com'}}
-        
+    <div>{contactComponents}</div>
+
+   <div>{jokeComponents}</div> 
+
+    <div>{productComponents}</div>
+    {/* /* <Joke 
+        content={{
+            Question:"How are you?",
+            Answer:"Im Alien"
+        }}
         />
-        <ContactCard 
-             contact={{imgUrl:"http://placekitten.com/300/200",
-             phone:'(+61) 449 994 035',
-             name:'Shri RajiniKanth',
-             email:'rajini.kanth@gmail.com'}}
-        
+        <Joke 
+       content={{
+        Question:"How are you?",
+        Answer:"Im Alien"
+    }}
         />
+        <Joke 
+         content={{
+            Question:"How are you?",
+            Answer:"Im Alien"
+        }}
+        />
+        <Joke 
+         content={{
+            Question:"How are you?",
+            Answer:"Im Alien"
+        }}
+        />
+        <Joke 
+         content={{
+            Question:"How are you?",
+            Answer:"Im Alien"
+        }}
+        />
+        <Joke 
+        
+        content={{
+            // Question:"How are you?",
+            Answer:"Im Alien"
+        }}
+    /> */ }
         </div>
         <h1 style={styles}>Good{timeOfDay}!</h1>
         </div>

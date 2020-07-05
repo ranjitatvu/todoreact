@@ -3,10 +3,10 @@ import React from 'react'
 function ContactCard(props){
     return(
         <div className='contact-card'>
-            <img src={props.contact.imgUrl} />
-            <h3>{props.contact.name}</h3>
-            <p>Phone: {props.contact.phone}</p>
-            <p>Email:{props.contact.email}</p>
+            <img src={props.contactcard.imgUrl} />
+            <h3>{props.contactcard.name}</h3>
+            <p>Phone: {props.contactcard.phone}</p>
+            <p>Email:{props.contactcard.email}</p>
         </div>
     )
 }
