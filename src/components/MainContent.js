@@ -6,6 +6,7 @@ import jokesData from '../jokesData'
 import contactData from "../contactData"
 import vschoolProducts from '../vschoolProducts'
 import ProductList from './ProductList'
+import todoData from '../todoData'
 function MainContent(){
 
     const productComponents = vschoolProducts.map(product =>
@@ -14,10 +15,13 @@ function MainContent(){
     const contactComponents =  contactData.map(contact => 
         <ContactCard key={contact.id} contactcard={contact} 
         /> )
+     
+        const todoDataComponents  =  todoData.map(todo =>
+            <TodoItem key={todo.id} todoCard= {todo}/>)
 
    const jokeComponents =  jokesData.map(joke => 
         
-            <Joke question ={joke.question} 
+            <Joke key={joke.id} question ={joke.question} 
             punchline={joke.punchLine} />)
 
     const date = new Date()
@@ -42,14 +46,15 @@ function MainContent(){
         <div>
         <p>This is main content</p>
         
-        <TodoItem />
-        <TodoItem />
+     
         <div>
     <div>{contactComponents}</div>
 
    <div>{jokeComponents}</div> 
 
     <div>{productComponents}</div>
+
+    <div>{todoDataComponents}</div>
     {/* /* <Joke 
         content={{
             Question:"How are you?",
@@ -88,7 +93,7 @@ function MainContent(){
         }}
     /> */ }
         </div>
-        <h1 style={styles}>Good{timeOfDay}!</h1>
+        <h1 style={styles}>Good {timeOfDay}!</h1>
         </div>
     )
 }

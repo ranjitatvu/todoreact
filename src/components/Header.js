@@ -1,9 +1,18 @@
 import React from 'react'
 
-function Header(){
-    return(
-        <header className="navbar">This is Header</header>
-    )
+class Header extends React.Component{
+    render(){
+        return(
+
+            <header className="navbar">This is Header</header>
+        )
+    }
 }
+
+// function Header(){
+//     return(
+//         <header className="navbar">This is Header</header>
+//     )
+// }
 
 export default Header
