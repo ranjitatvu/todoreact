@@ -8,7 +8,13 @@ import vschoolProducts from '../vschoolProducts'
 import ProductList from './ProductList'
 import todoData from '../todoData'
 
+import StateCompo from './StateCompo'
+import LoggedIn from "./LoggedIn"
+
+
 class MainContent extends React.Component{
+
+    
     render(){
 
         const productComponents = vschoolProducts.map(product =>
@@ -49,7 +55,6 @@ class MainContent extends React.Component{
             <div>
             <p>This is main content</p>
             
-         
             <div>
         <div>{contactComponents}</div>
     
@@ -58,6 +63,8 @@ class MainContent extends React.Component{
         <div>{productComponents}</div>
     
         <div>{todoDataComponents}</div>
+        <StateCompo />
+        <LoggedIn />
         
             </div>
             <h1 style={styles}>Good {timeOfDay}!</h1>
