@@ -14,8 +14,27 @@ import LoggedIn from "./LoggedIn"
 
 class MainContent extends React.Component{
 
-    
+    constructor(){
+        super()
+        this.state={
+            name:'Ranjith'
+        }
+        this.changeName = this.changeName.bind(this)
+    }
+
+    changeName(){
+
+        this.setState(prevState => {
+                return{
+                    name:prevState.name + ' Palaniappan'
+                }
+        }) 
+    }
+
+
     render(){
+
+
 
         const productComponents = vschoolProducts.map(product =>
             <ProductList key={product.id} product ={product}/> )
@@ -52,7 +71,12 @@ class MainContent extends React.Component{
 
         return(
 
+        
             <div>
+                <div>
+                    <h1 onClick={this.changeName}>{this.state.name}</h1>
+                </div>
+
             <p>This is main content</p>
             
             <div>

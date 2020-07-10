@@ -10,14 +10,31 @@ class App extends React.Component{
 constructor(){
   super()
   this.state ={
-      todos: todoData
+      todos: todoData,
+      count:0
   }
+    this.handleClick = this.handleClick.bind(this)
+}
+
+handleClick(){
+  console.log('click count')
+  this.setState(prevState=>{
+    return{
+      count:prevState.count+1
+    }
+  })
 }
 
   render(){
     const todoItems = this.state.todos.map(todoData => <TodoItem key={todoData.id} todoData={todoData}/>)
     return(
       <div>
+        <div>
+
+          <h1>{this.state.count}</h1>
+          <button onClick={this.handleClick}>Change!</button>
+
+        </div>
     
     <Header />
     <MainContent />
@@ -27,7 +44,7 @@ constructor(){
 
       <div>
 
-        <img onMouseOver={()=>console.log("Hi i was hovered")} src="https://www.fillmurray.com/200/100"/>
+        <img onFocus={()=> console.log("This is on Focus")} onMouseOver={()=>console.log("Hi i was hovered")} src="https://www.fillmurray.com/200/100"/>
         <br/>
         <br/>
         <button onMouseOver={()=>console.log("I was hover")}  onClick ={() => console.log("I was Clicked")}>Click Me</button>
