@@ -1,17 +1,22 @@
 import React from 'react'
+//import todoData from '../todoData'
 
 
-class TodoItem extends React.Component{
+function TodoItem(props){
 
-    render(){
-        return(
-<div> 
-<input  type="checkbox" checked={this.props.todoCard.completed}/>
-    <p style={{color:'red'}}>{this.props.todoCard.text}</p>
+
     
-      </div>
+      
+            
+          return(
+             <div className='todo-item'> 
+                 { <input type="checkbox" checked={props.completed}/> }
+                 <p style={{color:'red'}}>{props.text}</p>
+            
+               </div>
+         
         )
-    }
+    
 }
 
 // function TodoItem(props){
