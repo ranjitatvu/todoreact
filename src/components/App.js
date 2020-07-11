@@ -4,6 +4,7 @@ import MainContent from "./MainContent"
 import Header from "./Header"
 import TodoItem from './TodoItem'
 import todoData from '../todoData'
+import Condition from './Condition'
 
 class App extends React.Component{
 
@@ -11,9 +12,24 @@ constructor(){
   super()
   this.state ={
       todos: todoData,
-      count:0
+      count:0,
+      new:2000,
+      isLoading:true
   }
+
+ 
+
     this.handleClick = this.handleClick.bind(this)
+    this.halfClick=this.halfClick.bind(this)
+    this.handleChange=this.handleChange.bind(this)
+}
+
+componentDidMount(){
+  setTimeout(() => {
+    this.setState({
+      isLoading:false
+    })
+  }, 3000)
 }
 
 handleClick(){
@@ -25,20 +41,46 @@ handleClick(){
   })
 }
 
+halfClick(){
+  this.setState(prevState=>{
+    return{
+      new:prevState.new/2
+    }
+  })
+}
+
+handleChange(id){
+  this.setState(prevState=>{
+    const updateTodos = prevState.todos.map(todo => {
+      if(todo.id===id){
+        todo.completed =!todo.completed
+      }
+      return todo
+    })
+    return{
+      todos:updateTodos
+    }
+  })
+}
+
   render(){
-    const todoItems = this.state.todos.map(todoData => <TodoItem key={todoData.id} todoData={todoData}/>)
+    const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item}
+    handleChange={this.handleChange}/>)
     return(
       <div>
         <div>
 
           <h1>{this.state.count}</h1>
+          <h1>{this.state.new}</h1>
           <button onClick={this.handleClick}>Change!</button>
-
+          <button onClick={this.halfClick}>Change!</button>
+        
         </div>
     
     <Header />
     <MainContent />
     <Footer />
+    <Condition isLoading={this.state.isLoading} />
     
     <div>{todoItems}</div>
 

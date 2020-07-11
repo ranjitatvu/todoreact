@@ -8,10 +8,12 @@ function TodoItem(props){
           return(
              <div className='todo-item'> 
                   <input 
-                  type="checkbox" 
-                  checked={props.completed}
-                  onChange={()=>console.log("this changed!")}/> 
-                 <p style={{color:'red'}}>{props.text}</p>
+                     type="checkbox" 
+                     //checked={props.item.completed}
+                     onChange={()=>props.handleChange(props.item.id)}
+                   /> 
+                  
+                   <p style={{color:'red'}}>{props.item.text}</p>
             
                </div>
          

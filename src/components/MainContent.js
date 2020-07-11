@@ -43,8 +43,8 @@ class MainContent extends React.Component{
             <ContactCard key={contact.id} contactcard={contact} 
             /> )
          
-            const todoDataComponents  =  todoData.map(todo =>
-                <TodoItem key={todo.id} todoCard= {todo}/>)
+            // const todoDataComponents  =  todoData.map(todo =>
+            //     <TodoItem key={todo.id} todoCard= {todo}/>)
     
        const jokeComponents =  jokesData.map(joke => 
             
@@ -86,7 +86,7 @@ class MainContent extends React.Component{
     
         <div>{productComponents}</div>
     
-        <div>{todoDataComponents}</div>
+        {/* <div>{todoDataComponents}</div> */}
         <StateCompo />
         <LoggedIn />
         
