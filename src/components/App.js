@@ -5,7 +5,7 @@ import Header from "./Header"
 import TodoItem from './TodoItem'
 import todoData from '../todoData'
 import Condition from './Condition'
-
+import ConditionRendering from './ConditionalRendering'
 class App extends React.Component{
 
 constructor(){
@@ -68,6 +68,7 @@ handleChange(id){
     handleChange={this.handleChange}/>)
     return(
       <div>
+        <ConditionRendering />
         <div>
 
           <h1>{this.state.count}</h1>
@@ -90,6 +91,7 @@ handleChange(id){
         <br/>
         <br/>
         <button onMouseOver={()=>console.log("I was hover")}  onClick ={() => console.log("I was Clicked")}>Click Me</button>
+      
       </div>
     </div> 
     )
