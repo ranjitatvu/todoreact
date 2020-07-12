@@ -6,6 +6,7 @@ import TodoItem from './TodoItem'
 import todoData from '../todoData'
 import Condition from './Condition'
 import ConditionRendering from './ConditionalRendering'
+import Forms from './Forms'
 class App extends React.Component{
 
 constructor(){
@@ -15,6 +16,7 @@ constructor(){
       count:0,
       new:2000,
       isLoading:true,
+      loading:false,
       character:{}
   }
 
@@ -32,14 +34,17 @@ componentDidMount(){
       isLoading:false
     })
   }, 3000)
+  this.setState({loading:true})
+
 
   fetch("https://api.github.com/users/hadley/orgs")
       .then(response => response.json())
       .then(data =>{
         this.setState({
+          loading:false,
           character:data
         })
-        
+        console.log(this.state.character)
       })
       
 }
@@ -77,13 +82,14 @@ handleChange(id){
 }
 
   render(){
+    const text = this.state.loading? "loading..." : this.state.character.login
     const todoItems = this.state.todos.map(item => <TodoItem key={item.id} item={item}
     handleChange={this.handleChange}/>)
     return(
       <div>
         <ConditionRendering />
 
-        {this.state.character.login}
+    <p>{text}</p>
         <div>
 
           <h1>{this.state.count}</h1>
@@ -92,7 +98,7 @@ handleChange(id){
           <button onClick={this.halfClick}>Change!</button>
         
         </div>
-    
+    <Forms />
     <Header />
     <MainContent />
     <Footer />
