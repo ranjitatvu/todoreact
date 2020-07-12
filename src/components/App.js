@@ -14,7 +14,8 @@ constructor(){
       todos: todoData,
       count:0,
       new:2000,
-      isLoading:true
+      isLoading:true,
+      character:{}
   }
 
  
@@ -25,12 +26,24 @@ constructor(){
 }
 
 componentDidMount(){
+  console.log('hi')
   setTimeout(() => {
     this.setState({
       isLoading:false
     })
   }, 3000)
+
+  fetch("https://api.github.com/users/hadley/orgs")
+      .then(response => response.json())
+      .then(data =>{
+        this.setState({
+          character:data
+        })
+        
+      })
+      
 }
+
 
 handleClick(){
   console.log('click count')
@@ -69,6 +82,8 @@ handleChange(id){
     return(
       <div>
         <ConditionRendering />
+
+        {this.state.character.login}
         <div>
 
           <h1>{this.state.count}</h1>
