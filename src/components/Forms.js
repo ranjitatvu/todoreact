@@ -7,7 +7,9 @@ class Forms extends React.Component{
         this.state={
                 firstName:"",
                 lastName:"",
-                isFriendly:true
+                isFriendly:true,
+                favColor:"red"
+            
         }
     
     this.handleChange=this.handleChange.bind(this)
@@ -16,6 +18,8 @@ class Forms extends React.Component{
 
     handleChange(event){
         const {name, value, type, checked} = event.target
+
+        type === "checkbox" ? this.setState({[name]: checked}):
             this.setState({
                 [name]: value
             })
@@ -32,12 +36,21 @@ class Forms extends React.Component{
                         <input type="text" name ="lastName" placeholder="Last Name" onChange={this.handleChange} />                 
                         <textarea value="default value"/>
                         <br/>
+                        <label>
                         <input 
                         name="isFriendly"
                         type="checkbox" 
                         checked={this.state.isFriendly}
                         onChange={this.handleChange}
-                        />
+
+                        /> Is Friendly?
+                        </label>
+                        <select value={this.state.favColor}>
+                            <option value="blue"></option>
+                            <option value="red"></option>
+                            <option value="orange"></option>
+                            <option value="yellow"></option>
+                        </select>
                     
                         <h1>{this.state.firstName} {this.state.lastName}</h1>    
                     
